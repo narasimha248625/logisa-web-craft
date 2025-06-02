@@ -48,7 +48,7 @@ const HomePage = () => {
               <div className="relative">
                 <div className="w-80 h-80 bg-gradient-to-br from-gray-200 to-gray-300 rounded-2xl shadow-2xl flex items-center justify-center overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+                    src="/lovable-uploads/9df2d0ae-6741-4f14-aef0-e7a122377d7a.png"
                     alt="Varahanarasimha Logisa"
                     className="w-full h-full object-cover"
                   />
