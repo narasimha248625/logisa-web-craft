@@ -1,4 +1,3 @@
-
 import { Code, Smartphone, Database, Zap, CheckCircle, ArrowRight } from "lucide-react";
 
 const ServicesPage = () => {
