@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Mail, Phone, Send, CheckCircle, MapPin } from "lucide-react";
 
@@ -10,19 +9,38 @@ const ContactPage = () => {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [responseMessage, setResponseMessage] = useState('');
+  const [isError, setIsError] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
-    // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setResponseMessage('');
+    setIsError(false);
+
+    try {
+      const res = await fetch('https://formspree.io/f/xeokoolj', { // Replace with your Formspree endpoint
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        setResponseMessage('Thank you! Your message has been sent successfully.');
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setIsSubmitted(false), 3000);
+      } else {
+        throw new Error('Failed to send message. Please try again later.');
+      }
+    } catch (error) {
+      setIsError(true);
+      setResponseMessage(error.message || 'Something went wrong.');
+    }
   };
 
   return (
@@ -108,7 +126,7 @@ const ContactPage = () => {
               {isSubmitted && (
                 <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center space-x-3">
                   <CheckCircle className="text-green-500" size={20} />
-                  <span className="text-green-700">Thank you! Your message has been sent successfully.</span>
+                  <span className="text-green-700">{responseMessage}</span>
                 </div>
               )}
 

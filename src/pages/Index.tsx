@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Home, User, Briefcase, Code, Mail } from "lucide-react";
 import HomePage from "../components/HomePage";
@@ -19,6 +18,10 @@ const Index = () => {
     { id: "services", label: "Services", icon: Code },
     { id: "contact", label: "Contact", icon: Mail },
   ];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
 
   const renderCurrentPage = () => {
     switch (currentPage) {
