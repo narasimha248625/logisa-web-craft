@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     // ✅ Set base path for GitHub Pages
-    base: "/logisa-web-craft/",
+    base: isProduction ? "/logisa-web-craft/" : "/",
 
     server: {
       host: "::",
