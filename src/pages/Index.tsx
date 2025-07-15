@@ -129,7 +129,7 @@ const Index = () => {
       <footer className="bg-black text-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-gray-400">
-            © 2024 Varahanarasimha Logisa. All rights reserved.
+            © 2025 Varahanarasimha Logisa. All rights reserved.
           </p>
         </div>
       </footer>

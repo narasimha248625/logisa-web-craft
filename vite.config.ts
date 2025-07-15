@@ -10,6 +10,16 @@ export default defineConfig(({ mode }) => {
   return {
     // ✅ Set base path for GitHub Pages
     base: isProduction ? "/logisa-web-craft/" : "/",
+    
+    build: {
+      outDir: "dist",
+      assetsDir: "assets",
+      rollupOptions: {
+        output: {
+          manualChunks: undefined,
+        },
+      },
+    },
 
     server: {
       host: "::",
